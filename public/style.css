@@ -2,95 +2,115 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #ece5dd; /* WhatsApp background */
-    color: #333;
+    align-items: flex-start; /* Align to top for mobile screens */
+    background: #f0f0f0; /* Light background */
+    overflow: hidden; /* Prevent body scroll */
 }
 
+/* Main Chat Container */
 #chat {
-    width: 350px;
-    height: 600px;
-    background: #ffffff;
+    width: 90vw; /* Takes up 90% of the screen width */
+    height: 90vh; /* Takes up 90% of the screen height */
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    overflow: hidden;
+    background: #ffffff; /* White background for the chat box */
+    border-radius: 10px; /* Rounded corners for box effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for box */
+    overflow: hidden; /* Hide content outside box */
 }
 
-/* Header */
+/* Header (fixed on top) */
 #header {
     height: 50px;
     background: #075e54; /* WhatsApp green */
     color: white;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 15px;
     font-size: 16px;
     font-weight: bold;
+    flex-shrink: 0; /* Prevent header from resizing */
+    position: sticky; /* Keep header sticky */
+    top: 0;
 }
 
-/* Message area */
+/* Message Area (scrollable part) */
 #messages {
     flex: 1;
     overflow-y: auto;
     padding: 10px;
-    background: #ece5dd;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    scroll-behavior: smooth;
+    margin-bottom: 60px; /* Space for input area */
 }
 
+/* Individual Messages */
 .message {
     max-width: 70%;
     padding: 8px 12px;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 14px;
     word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Incoming messages */
+/* Incoming Messages */
 .message.incoming {
-    background: #ffffff;
+    background: #dcf8c6; /* WhatsApp green */
     align-self: flex-start;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Outgoing messages */
+/* Outgoing Messages */
 .message.outgoing {
-    background: #dcf8c6; /* WhatsApp light green */
+    background: #dcf8c6; /* WhatsApp green */
     align-self: flex-end;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Input area */
+/* Timestamp */
+.timestamp {
+    font-size: 10px;
+    color: #555;
+    margin-top: 3px;
+    align-self: flex-end;
+}
+
+/* Input Area */
 #input-area {
     display: flex;
     padding: 10px;
-    background: #f0f0f0;
-    border-top: 1px solid #ddd;
+    background: #202c33; /* WhatsApp dark grey */
+    border-top: 1px solid #2a3942;
+    flex-shrink: 0;
+    position: fixed; /* Keep input at the bottom */
+    bottom: 0;
+    width: 90vw; /* Same width as chat */
+    z-index: 1; /* Ensure it's on top of messages */
 }
 
 #message-input {
     flex: 1;
-    border: none;
-    outline: none;
     padding: 10px;
     border-radius: 20px;
+    border: none;
+    outline: none;
     font-size: 14px;
-    background: #ffffff;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    background: #2a3942;
+    color: white;
 }
 
 #send-button {
-    margin-left: 10px;
     background: #075e54;
     color: white;
     border: none;
     border-radius: 50%;
+    margin-left: 10px;
     width: 40px;
     height: 40px;
     display: flex;
@@ -98,23 +118,8 @@ body {
     align-items: center;
     cursor: pointer;
     font-size: 16px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 #send-button:hover {
-    background: #0b7a66;
-}
-
-/* Scrollbar styling */
-#messages::-webkit-scrollbar {
-    width: 6px;
-}
-
-#messages::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
-}
-
-#messages::-webkit-scrollbar-thumb:hover {
-    background: #bbb;
+    background: #128c7e;
 }

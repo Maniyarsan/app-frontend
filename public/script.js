@@ -2,6 +2,18 @@ const messagesDiv = document.getElementById('messages');
 const input = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
 
+// Function to get current time in HH:MM AM/PM format
+function getCurrentTime() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = now.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // 12 AM/PM case
+    const minuteStr = minutes < 10 ? '0' + minutes : minutes;
+    return `${hours}:${minuteStr} ${ampm}`;
+}
+
 // Determine WebSocket URL based on the environment
 const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
 const host = window.location.hostname === 'localhost' ? '192.168.1.42:3000' : 'message.up.railway.app';
@@ -41,11 +53,18 @@ sendButton.addEventListener('click', () => {
     }
 });
 
-// Helper function to display a message
+// Helper function to display a message with timestamp
 function displayMessage(content, type) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message', type);
-    messageDiv.textContent = content;
+    messageDiv.innerHTML = content;
+
+    // Create and append timestamp
+    const timestamp = document.createElement('div');
+    timestamp.classList.add('timestamp');
+    timestamp.textContent = getCurrentTime();
+    messageDiv.appendChild(timestamp);
+
     messagesDiv.appendChild(messageDiv);
     messagesDiv.scrollTop = messagesDiv.scrollHeight; // Scroll to the bottom
 }
