@@ -2,8 +2,10 @@ const messagesDiv = document.getElementById('messages');
 const input = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
 
-// Establish WebSocket connection
-const ws = new WebSocket('ws://localhost:3000');
+// Establish WebSocket connection (use the correct URL for local or production)
+const ws = new WebSocket(
+    window.location.hostname === 'localhost' ? 'http://192.168.1.42:3000' : 'https://message.up.railway.app'
+);
 
 // Listen for incoming messages
 ws.onmessage = (event) => {
