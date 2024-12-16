@@ -1,0 +1,120 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #ece5dd; /* WhatsApp background */
+    color: #333;
+}
+
+#chat {
+    width: 350px;
+    height: 600px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Header */
+#header {
+    height: 50px;
+    background: #075e54; /* WhatsApp green */
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Message area */
+#messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    background: #ece5dd;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 70%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+/* Incoming messages */
+.message.incoming {
+    background: #ffffff;
+    align-self: flex-start;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Outgoing messages */
+.message.outgoing {
+    background: #dcf8c6; /* WhatsApp light green */
+    align-self: flex-end;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Input area */
+#input-area {
+    display: flex;
+    padding: 10px;
+    background: #f0f0f0;
+    border-top: 1px solid #ddd;
+}
+
+#message-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    background: #ffffff;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#send-button {
+    margin-left: 10px;
+    background: #075e54;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#send-button:hover {
+    background: #0b7a66;
+}
+
+/* Scrollbar styling */
+#messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#messages::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+#messages::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+}
