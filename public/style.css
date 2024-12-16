@@ -55,7 +55,7 @@ body {
     max-width: 70%;
     padding: 8px 12px;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 12px;
     word-wrap: break-word;
     display: flex;
     flex-direction: column;
@@ -85,8 +85,8 @@ body {
 #input-area {
     display: flex;
     padding: 10px;
-    background: #202c33; /* WhatsApp dark grey */
-    border-top: 1px solid #2a3942;
+    background: #f0f0f0; 
+    border-top: 1px solid #f0f0f0;
     flex-shrink: 0;
     position: fixed; /* Keep input at the bottom */
     bottom: 0;
