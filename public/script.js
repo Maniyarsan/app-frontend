@@ -2,10 +2,10 @@ const messagesDiv = document.getElementById('messages');
 const input = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
 
-// Establish WebSocket connection (use the correct URL for local or production)
-const ws = new WebSocket(
-    window.location.hostname === 'localhost' ? 'http://192.168.1.42:3000' : 'https://message.up.railway.app'
-);
+// Determine WebSocket URL based on the environment
+const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+const host = window.location.hostname === 'localhost' ? '192.168.1.42:3000' : 'message.up.railway.app';
+const ws = new WebSocket(`${protocol}//${host}`);
 
 // Listen for incoming messages
 ws.onmessage = (event) => {
@@ -19,6 +19,16 @@ ws.onmessage = (event) => {
     } else {
         displayMessage(event.data, 'incoming');
     }
+};
+
+// Handle WebSocket errors
+ws.onerror = (error) => {
+    console.error('WebSocket error:', error);
+};
+
+// Handle WebSocket connection close
+ws.onclose = () => {
+    console.warn('WebSocket connection closed');
 };
 
 // Handle sending messages
